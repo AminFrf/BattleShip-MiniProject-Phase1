@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 /**
   The BattleShip class manages the gameplay of the Battleship game between two players.
@@ -23,11 +24,14 @@ public class BattleShip {
 
     // Scanner object for user input
     static Scanner scanner = new Scanner(System.in);
+    Random rand = new Random();
+    int ranNum = 0;
+    char ranChar = ' ';
 
     /**
-      The main method that runs the game loop.
-      It initializes the grids for both players, places ships randomly, and manages turns.
-      The game continues until one player's ships are completely sunk.
+     * The main method that runs the game loop.
+     * It initializes the grids for both players, places ships randomly, and manages turns.
+     * The game continues until one player's ships are completely sunk.
      */
     public static void main(String[] args) {
         // Initialize grids for both players
@@ -61,56 +65,95 @@ public class BattleShip {
     }
 
     /**
-      Initializes the grid by filling it with water ('~').
-
-      @param grid The grid to initialize.
+     * Initializes the grid by filling it with water ('~').
+     *
+     * @param grid The grid to initialize.
      */
     static void initializeGrid(char[][] grid) {
+
+        for (int i = 0; i <= J; i++) {
+            for (int j = 0; j <= 9; j++) {
+                grid[i][j] = "~";
+            }//end of nested for
+        }//end of for
+        /*System.out.println("* please enter the coordinates *");
+        System.out.println("row (0 _ 9): " );
+        int row = scanner.nextInt();
+        System.out.println("column (A _ J): " );
+        char column = scanner.nextInt();*/
         //todo
-    }
+    }//initializeGrid
 
     /**
-      Places ships randomly on the given grid.
-      This method is called for both players to place their ships on their respective grids.
-
-      @param grid The grid where ships need to be placed.
+     * Places ships randomly on the given grid.
+     * This method is called for both players to place their ships on their respective grids.
+     *
+     * @param grid The grid where ships need to be placed.
      */
     static void placeShips(char[][] grid) {
-        //todo
+        int min = 48;
+        int max = 49;
+        int random = rand.nextInt(max - min + 1) + min;
+        for (int i = 2; i <= 5; i++) {
+
+            if (random == 0) {
+            //ofoghi
+            min = 48;
+            max = 57;
+            int row = rand.nextInt(max - min + 1) + min;
+            min = 65;
+            max = 74;
+            int col1 = rand.nextInt(max - min + 1) + min;
+            char col = (char) row;
+            if(canPlaceShip(char[][] grid, ))
+        }//end of if
+        if (random == 1) {
+            //amoodi
+            min = 48;
+            max = 57;
+            while (row <= 6) {
+                int row = rand.nextInt(max - min + 1) + min;
+            }
+            min = 65;
+            max = 74;
+            int col1 = rand.nextInt(max - min + 1) + min;
+            char col = (char) row;
+        }//end of if
+    }//end of for
     }
 
     /**
-      Checks if a ship can be placed at the specified location on the grid.
-      This includes checking the size of the ship, its direction (horizontal or vertical),
-      and if there's enough space to place it.
-
-      @param grid The grid where the ship is to be placed.
-      @param row The starting row for the ship.
-      @param col The starting column for the ship.
-      @param size The size of the ship.
-      @param horizontal The direction of the ship (horizontal or vertical).
-      @return true if the ship can be placed at the specified location, false otherwise.
+     * Checks if a ship can be placed at the specified location on the grid.
+     * This includes checking the size of the ship, its direction (horizontal or vertical),
+     * and if there's enough space to place it.
+     *
+     * @param grid       The grid where the ship is to be placed.
+     * @param row        The starting row for the ship.
+     * @param col        The starting column for the ship.
+     * @param size       The size of the ship.
+     * @param horizontal The direction of the ship (horizontal or vertical).
+     * @return true if the ship can be placed at the specified location, false otherwise.
      */
     static boolean canPlaceShip(char[][] grid, int row, int col, int size, boolean horizontal) {
         //todo
         return true;
     }
-
+    e
     /**
-      Manages a player's turn, allowing them to attack the opponent's grid
-      and updates their tracking grid with hits or misses.
-
-      @param opponentGrid The opponent's grid to attack.
-      @param trackingGrid The player's tracking grid to update.
+     * Manages a player's turn, allowing them to attack the opponent's grid
+     * and updates their tracking grid with hits or misses.
+     *
+     * @param opponentGrid The opponent's grid to attack.
+     * @param trackingGrid The player's tracking grid to update.
      */
     static void playerTurn(char[][] opponentGrid, char[][] trackingGrid) {
         //todo
     }
 
     /**
-      Checks if the game is over by verifying if all ships are sunk.
-
-      @return true if the game is over (all ships are sunk), false otherwise.
+     * Checks if the game is over by verifying if all ships are sunk.
+     *
+     * @return true if the game is over (all ships are sunk), false otherwise.
      */
     static boolean isGameOver() {
         //todo
@@ -118,10 +161,10 @@ public class BattleShip {
     }
 
     /**
-      Checks if all ships have been destroyed on a given grid.
-
-      @param grid The grid to check for destroyed ships.
-      @return true if all ships are sunk, false otherwise.
+     * Checks if all ships have been destroyed on a given grid.
+     *
+     * @param grid The grid to check for destroyed ships.
+     * @return true if all ships are sunk, false otherwise.
      */
     static boolean allShipsSunk(char[][] grid) {
         //todo
@@ -129,10 +172,10 @@ public class BattleShip {
     }
 
     /**
-      Validates if the user input is in the correct format (e.g., A5).
-
-      @param input The input string to validate.
-      @return true if the input is in the correct format, false otherwise.
+     * Validates if the user input is in the correct format (e.g., A5).
+     *
+     * @param input The input string to validate.
+     * @return true if the input is in the correct format, false otherwise.
      */
     static boolean isValidInput(String input) {
         //todo
@@ -140,12 +183,18 @@ public class BattleShip {
     }
 
     /**
-      Prints the current state of the player's tracking grid.
-      This method displays the grid, showing hits, misses, and untried locations.
-
-      @param grid The tracking grid to print.
+     * Prints the current state of the player's tracking grid.
+     * This method displays the grid, showing hits, misses, and untried locations.
+     *
+     * @param grid The tracking grid to print.
      */
     static void printGrid(char[][] grid) {
-        //todo
-    }
-}
+
+
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j <= grid[i].length; j++) {
+                System.out.print(grid[i][j] + " ");
+            }//end of nested for
+            System.out.println();
+        }//end of for
+    }//end of printgrid
