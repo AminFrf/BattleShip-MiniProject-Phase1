@@ -136,7 +136,7 @@ public class BattleShip {
             }//end of if
 
         }//end of if
-    }//end of for
+    }//end of for...
     }
 
     /**
