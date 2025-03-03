@@ -98,26 +98,43 @@ public class BattleShip {
 
             if (random == 0) {
             //ofoghi
-            min = 48;
-            max = 57;
-            int row = rand.nextInt(max - min + 1) + min;
-            min = 65;
-            max = 74;
-            int col1 = rand.nextInt(max - min + 1) + min;
-            char col = (char) row;
-            if(canPlaceShip(char[][] grid, ))
+                do {
+                    boolean horizontal = true;
+                    min = 48;
+                    max = 57;
+                    int row = rand.nextInt(max - min + 1) + min;
+                    min = 65;
+                    max = 74;
+                    while (col1 <= (74 - i) + 1) {
+                        int col1 = rand.nextInt(max - min + 1) + min;
+                    }//end of while
+                    char col = (char) row;
+                }while(canPlaceShip(char[][] grid, row , col1 , i , true))
+                    for (int j = 0; j < i ; j++) {
+                        grid[row][col] = '#' ;
+                    }//end of for
+                }//end of if
         }//end of if
         if (random == 1) {
             //amoodi
+            do{
+            boolean horizontal = false;
             min = 48;
             max = 57;
-            while (row <= 6) {
+            while (row <= ((10-i)-1) {
                 int row = rand.nextInt(max - min + 1) + min;
-            }
+            }//end of while loop
             min = 65;
             max = 74;
-            int col1 = rand.nextInt(max - min + 1) + min;
-            char col = (char) row;
+                int col1 = rand.nextInt(max - min + 1) + min;
+            char col = (char) col1;
+            }while(canPlaceShip(char[][] grid, row , col1 , i , true))
+            //if(canPlaceShip(char[][] grid, row , col1 , i , true)==true){
+                for (int j = 0; j < i ; j++) {
+                    grid[row][col] = '#' ;
+                }//end of for
+            }//end of if
+
         }//end of if
     }//end of for
     }
