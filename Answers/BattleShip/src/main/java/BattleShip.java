@@ -76,11 +76,6 @@ public class BattleShip {
                 grid[i][j] = "~";
             }//end of nested for
         }//end of for
-        /*System.out.println("* please enter the coordinates *");
-        System.out.println("row (0 _ 9): " );
-        int row = scanner.nextInt();
-        System.out.println("column (A _ J): " );
-        char column = scanner.nextInt();*/
         //todo
     }//initializeGrid
 
@@ -210,9 +205,15 @@ public class BattleShip {
      * @return true if all ships are sunk, false otherwise.
      */
     static boolean allShipsSunk(char[][] grid) {
-        //todo
+        for (int i = 0; i < 10 ; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (grid[i][j] == '#') {
+                    return false;
+                }//end of if
+            }//end of nested for
+        }//end of for
         return true;
-    }
+    }//end of allShipsSunk
 
     /**
      * Validates if the user input is in the correct format (e.g., A5).
@@ -221,9 +222,21 @@ public class BattleShip {
      * @return true if the input is in the correct format, false otherwise.
      */
     static boolean isValidInput(String input) {
-        //todo
-        return true;
-    }
+        char [] chars = input.toCharArray();
+        if(chars.length != 2){
+            return false;
+        }//end of if
+        int code = (int)chars[0]
+        else if (code > 74 || code < 65) {
+            return false;
+        }//end of else if
+        else if(chars[1] > 9 || chars[1]< 0){
+            return false;
+        }//end of else if
+        else {
+            return true;
+        }//end of else
+    }//end of isValidInput
 
     /**
      * Prints the current state of the player's tracking grid.
