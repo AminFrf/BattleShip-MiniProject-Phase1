@@ -194,9 +194,11 @@ public class BattleShip {
      * @return true if the game is over (all ships are sunk), false otherwise.
      */
     static boolean isGameOver() {
-        //todo
+        if(allShipsSunk(player1Grid) || allShipsSunk(player2Grid)){
+            return true;
+        }//end of if
         return false;
-    }
+    }//end of isGameOver
 
     /**
      * Checks if all ships have been destroyed on a given grid.
